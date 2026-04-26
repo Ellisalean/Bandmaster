@@ -1,0 +1,71 @@
+{
+  "entities": {
+    "user": {
+      "title": "User",
+      "description": "Band member information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "instrument": { "type": "string" },
+        "role": { "type": "string" }
+      },
+      "required": ["uid", "name", "email"]
+    },
+    "song": {
+      "title": "Song",
+      "description": "Repertoire song",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "chords": { "type": "string" },
+        "pdfUrl": { "type": "string" }
+      },
+      "required": ["id", "title"]
+    },
+    "rehearsal": {
+      "title": "Rehearsal",
+      "description": "Scheduled rehearsal",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" },
+        "songs": { "type": "array" }
+      },
+      "required": ["id", "date"]
+    },
+    "event": {
+      "title": "Event",
+      "description": "Band event or concert",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" },
+        "location": { "type": "string" }
+      },
+      "required": ["id", "title", "date"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "user" },
+      "description": "User profiles"
+    },
+    "/songs/{songId}": {
+      "schema": { "$ref": "song" },
+      "description": "Song repertoire"
+    },
+    "/rehearsals/{rehearsalId}": {
+      "schema": { "$ref": "rehearsal" },
+      "description": "Scheduled rehearsals"
+    },
+    "/events/{eventId}": {
+      "schema": { "$ref": "event" },
+      "description": "Scheduled events"
+    }
+  }
+}
+

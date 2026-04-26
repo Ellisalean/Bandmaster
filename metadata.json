@@ -1,0 +1,5 @@
+{
+  "name": "BandMaster",
+  "description": "Band management app for scheduling, rehearsals, and repertoire.",
+  "requestFramePermissions": []
+}
